@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="Shopping Cart">
+    <title>Shopping Cart</title>
+  </head>
+  <body>
+    <header class="fixed-top">
+      <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
+        <div class="container">
+          <a class="navbar-brand" href="/"
+            ><img
+              src="./static/images/logo.png"
+              width="88.4px"
+              height="40px"
+              alt="Sabka Bazaar"
+          /></a>
+          <button
+            class="navbar-toggler d-sm-none"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarItems"
+            aria-controls="navbarSupportedContent"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarItems">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <li class="nav-item">
+                <a class="nav-link" aria-current="page" href="home.html">Home</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link active" href="product.html">Products</a>
+              </li>
+              <li class="nav-item d-md-none">
+                <span class="nav-link" data-bs-target="#signInModal" data-bs-toggle="modal" style="cursor: pointer;">Sign In</span>
+              </li>
+              <li class="nav-item d-md-none">
+                <span class="nav-link" data-bs-target="#registerModal" data-bs-toggle="modal" style="cursor: pointer;">Register</span>
+              </li>
+            </ul>
+          </div>
+          <button
+            class="btn btn-dark d-xs-none"
+            data-bs-toggle="modal"
+            data-bs-target="#signInModal"
+          >
+            Sign In
+          </button>
+          <button
+            class="btn btn-dark d-xs-none"
+            data-bs-toggle="modal"
+            data-bs-target="#registerModal"
+          >
+            Register
+          </button>
+          <div id="cart-container" class="btn bg-dark p-1" data-bs-toggle="modal" data-bs-target="#cartModalProduct" aria-label="cart-container">
+            <img src="./static/images/shopping-cart.png" width="40px" height="40px" alt="cart-icon"/>
+            <span class="text-white" id="cart-items">0 items</span>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <div id="add-to-cart-alert" class="alert alert-success mt-3 ms-5 p-1 position-fixed start-50 opacity-75 d-none" role="alert" style="z-index: 2; transform: translateX(-50%);">
+    </div>
+
+    <main class="container" style="margin-top: 4rem;">
+      <div class="row">
+        <aside id="categorie-sidebar" class="col-md-1 col-xs-12">
+          <!-- Dynamically create the sidebar -->
+        </aside>
+        <div
+          id="products-container"
+          class="container col-md-11 col-xs-12 col-sm12 p-2"
+        >
+          <!-- Dynamically create the products data -->
+          <div id="products-container-row" class="row"></div>
+        </div>
+      </div>
+    </main>
+
+    <!-- Sign In Modal -->
+    <div
+      class="modal fade"
+      id="signInModal"
+      tabindex="-1"
+      aria-labelledby="signInModal"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <div class="container-fluid">
+              <div class="row">
+                <div class="col-xs-12 col-sm-6 d-flex flex-column justify-content-center">
+                  <h2>Login</h4>
+                  <h6>
+                    Get Access to your Orders, Wishlist and Recommendations
+                  </h6>
+                </div>
+                <div class="col-xs-12 col-sm-6">
+                  <form>
+                    <div class="mb-3">
+                      <label for="inputEmail" class="form-label"
+                        >Email address</label
+                      >
+                      <input
+                        type="email"
+                        class="form-control"
+                        id="inputEmail"
+                        aria-describedby="email"
+                      />
+                    </div>
+                    <div class="mb-3">
+                      <label for="inputPassword" class="form-label"
+                        >Password</label
+                      >
+                      <input
+                        type="password"
+                        class="form-control"
+                        id="inputPassword1"
+                        aria-describedby="password"
+                      />
+                    </div>
+                    <button type="submit" class="btn custom-color">Login</button>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Register Modal -->
+    <div
+      class="modal fade"
+      id="registerModal"
+      tabindex="-1"
+      aria-labelledby="registerModal"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <div class="container-fluid">
+              <div class="row">
+                <div class="col-xs-12 col-sm-6 d-flex flex-column justify-content-center">
+                  <h2>Register</h4>
+                  <h6>
+                    We do not share your personal details with anyone
+                  </h6>
+                </div>
+                <div class="col-xs-12 col-sm-6">
+                  <form>
+                    <div class="mb-3">
+                      <label for="firstName" class="form-label"
+                        >First Name</label
+                      >
+                      <input
+                        type="text"
+                        class="form-control"
+                        id="firstName"
+                        aria-describedby="firstName"
+                        required
+                      />
+                    </div>
+                    <div class="mb-3">
+                      <label for="lastName" class="form-label"
+                        >Last Name</label
+                      >
+                      <input
+                        type="text"
+                        class="form-control"
+                        id="lastName"
+                        aria-describedby="lastName"
+                        required
+                      />
+                    </div>
+                    <div class="mb-3">
+                      <label for="emailAddress" class="form-label"
+                        >Email</label
+                      >
+                      <input
+                        type="email"
+                        class="form-control"
+                        id="emailAddress"
+                        aria-describedby="emailAddress"
+                        required
+                      />
+                    </div>
+                    <div class="mb-3">
+                      <label for="passwordRegister" class="form-label"
+                        >Password</label
+                      >
+                      <input
+                        type="password"
+                        class="form-control"
+                        id="passwordRegister"
+                        aria-describedby="passwordRegister"
+                        required
+                      />
+                    </div>
+                    <div class="mb-3">
+                      <label for="confirmPassword" class="form-label"
+                        >Confirm Password</label
+                      >
+                      <input
+                        type="text"
+                        class="form-control"
+                        id="confirmPassword"
+                        aria-describedby="confirmPassword"
+                        required
+                      />
+                    </div>
+                    <button type="submit" class="btn custom-color">Register</button>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Cart Modal -->
+    <div
+      class="modal fade"
+      id="cartModalProduct"
+      tabindex="-1"
+      aria-labelledby="cartModalProduct"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-fullscreen">
+        <div class="modal-content">
+          <div class="modal-header">
+            <div class="modal-title"><h5 class="d-inline">My Cart<span id="item-count">(0)</span></h5></div>
+            <button
+              id="clear-cart-button"
+              class="btn custom-color ms-auto me-0"
+              aria-label="Clear Cart"
+            >Clear Cart</button>
+            <button
+              type="button"
+              class="btn-close ms-2"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div id="modal-container" class="modal-body d-flex flex-column justify-content-between">
+            <!-- Dynamically populate the cart -->
+            <div id="empty-cart-message" class="d-flex flex-column justify-content-center align-items-center">
+              <h4>No items in your cart</h4>
+              <h5>Your favourite items are just a click away</h5>
+            </div>
+            <div id="start-shopping-button" class="d-grid g-2" data-bs-dismiss="modal">
+              <button class="btn custom-color">Start Shopping</button>
+            </div>
+            <div id="proceed-to-checkout-button" class="d-grid g-2 d-none align-self-end">
+              <button class="btn custom-color d-flex justify-content-between"><span>Proceed to Checkout</span><span id="final-price" class="text-end"></span></button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <footer class="bg-secondary p-2"><h5 class="text-white text-center">Copyright &COPY; 2011-2018 Sabka Bazaar Grocery Pvt. Ltd.</h5></footer>
+
+    <script
+      src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"
+      integrity="sha384-eMNCOe7tC1doHpGoWe/6oMVemdAVTMs2xqW4mwXrXsW0L84Iytr2wi5v2QjrP/xp"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.min.js"
+      integrity="sha384-cn7l7gDp0eyniUwwAZgrzD06kc/tftFf19TOAs2zVinnD/C7E91j9yyk5//jjpt/"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>

@@ -1,0 +1,34 @@
+body,
+html {
+  width: 100%;
+  margin: 0;
+}
+
+div.modal-dialog {
+  max-width: 1000px;
+}
+
+div#banners {
+  box-shadow: 0 10px 40px -10px #000 !important;
+}
+
+.center-items {
+  text-align: center;
+}
+
+div.card.category-card {
+  box-shadow: 0 10px 40px -10px #000;
+}
+
+.custom-color {
+  background-color: #bf2957 !important;
+  color: #fff !important;
+}
+
+@media screen and (max-width: 767px) {
+  button.btn.d-xs-none {
+    display: none;
+  }
+}
+
+@import "~bootstrap/scss/bootstrap";
